@@ -1,0 +1,29 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "me.quesia.areessgee.mixin",
+  "compatibilityLevel": "JAVA_8",
+  "client": [
+    "blocks.GravelBlockMixin",
+
+    "entities.BlazeEntityMixin",
+    "entities.EyeOfEnderEntityMixin",
+
+    "gui.CreateWorldScreenMixin",
+
+    "nether.bastion.data.BastionTreasureDataMixin",
+
+    "nether.biomes.BasaltDeltasBiomeMixin",
+    "nether.biomes.MultiNoiseBiomeSourceMixin",
+
+    "nether.ChunkStatusMixin",
+    "nether.StructureFeatureMixin",
+
+    "overworld.BuriedTreasureFeatureConfigMixin",
+    "overworld.CarverMixin",
+    "overworld.DefaultBiomeFeaturesMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

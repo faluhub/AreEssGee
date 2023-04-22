@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "id": "areessgee",
+  "version": "${version}",
+  "name": "AreEssGee",
+  "description": "Are Ess Gee (RSG)",
+  "authors": ["Quesia"],
+  "contact": {
+    "homepage": "https://github.com/QuesiaSR"
+  },
+  "accessWidener": "areessgee.accesswidener",
+  "license": "MIT",
+  "icon": "assets/areessgee/icon.png",
+  "environment": "client",
+  "mixins": ["areessgee.mixins.json"],
+  "depends": {
+    "minecraft": "1.16.1"
+  },
+  "breaks": {
+    "lithium": "*"
+  }
+}
