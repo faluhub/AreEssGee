@@ -10,7 +10,7 @@ import java.io.IOException;
 import java.util.*;
 
 public class SpeedrunConfig {
-    private static File FILE = FabricLoader.getInstance().getConfigDir().resolve("srcfg.json").toFile();
+    private static File FILE = FabricLoader.getInstance().getConfigDir().resolve("areessgee.json").toFile();
 
     public static void init() {
         if (!FILE.exists()) {
@@ -19,8 +19,11 @@ public class SpeedrunConfig {
         }
         JsonObject config = get(false);
         if (config.has("file")) {
-            FILE = new File(config.get("file").getAsString());
-            init();
+            File tempFile = new File(config.get("file").getAsString());
+            if (tempFile.exists()) {
+                FILE = tempFile;
+                init();
+            }
         }
     }
 

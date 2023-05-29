@@ -25,18 +25,21 @@ public class AreEssGee {
     public static final List<StructureFeature<?>> PLACED_STRUCTURES = new ArrayList<>();
     public static final List<ChunkPos> USED_QUADRANTS = new ArrayList<>();
 
-    public static int ANTI_BASALT_REGION_SIZE;
-    public static String ANTI_BASALT_REPLACEMENT;
-    public static List<String> AFFECTED_STRUCTURES = new ArrayList<>();
-    public static int AFFECTED_STRUCTURE_RANDOM_OFFSET;
-    public static int AFFECTED_STRUCTURE_RANDOM_BOUND;
-    public static float FLINT_MINIMUM_VALUE;
-    public static float ROD_MINIMUM_VALUE;
-    public static float BURIED_TREASURE_RARITY;
-    public static float OCEAN_CANYON_RARITY;
-    public static float TREASURE_BASTION_GOLD_BLOCK_RARITY;
-    public static boolean GUARANTEE_EYE_DROPS;
-    public static boolean ADD_BASALT_BASTIONS;
+    public static final int ANTI_BASALT_REGION_SIZE = SpeedrunConfig.getIntValue("ANTI_BASALT_REGION_SIZE", 120);
+    public static final String ANTI_BASALT_REPLACEMENT = SpeedrunConfig.getStringValue("ANTI_BASALT_REPLACEMENT", "nether_wastes");
+    public static final List<String> AFFECTED_STRUCTURES = SpeedrunConfig.getStringArrayValue("AFFECTED_STRUCTURES", "bastion_remnant", "fortress");
+    public static final int AFFECTED_STRUCTURE_RANDOM_OFFSET = SpeedrunConfig.getIntValue("AFFECTED_STRUCTURE_RANDOM_OFFSET", 3);
+    public static final int AFFECTED_STRUCTURE_RANDOM_BOUND = SpeedrunConfig.getIntValue("AFFECTED_STRUCTURE_RANDOM_BOUND", 4);
+    public static final int MAX_GLOBAL_STRONGHOLD_ROOM_LIMIT = SpeedrunConfig.getIntValue("MAX_GLOBAL_STRONGHOLD_ROOM_LIMIT", 10);
+    public static final float FLINT_MINIMUM_VALUE = SpeedrunConfig.getFloatValue("FLINT_MINIMUM_VALUE", 0.6F);
+    public static final float ROD_MINIMUM_VALUE = SpeedrunConfig.getFloatValue("ROD_MINIMUM_VALUE", 0.4F);
+    public static final float BURIED_TREASURE_RARITY = SpeedrunConfig.getFloatValue("BURIED_TREASURE_RARITY", 0.07F);
+    public static final float OCEAN_CANYON_RARITY = SpeedrunConfig.getFloatValue("OCEAN_CANYON_RARITY", 0.04F);
+    public static final float TREASURE_BASTION_GOLD_BLOCK_RARITY = SpeedrunConfig.getFloatValue("TREASURE_BASTION_GOLD_BLOCK_RARITY", 0.2F);
+    public static final float EYE_ODDS = SpeedrunConfig.getFloatValue("EYE_ODDS", 0.8F);
+    public static final boolean GUARANTEE_EYE_DROPS = SpeedrunConfig.getBooleanValue("GUARANTEE_EYE_DROPS", true);
+    public static final boolean ADD_BASALT_BASTIONS = SpeedrunConfig.getBooleanValue("ADD_BASALT_BASTIONS", true);
+    public static final boolean RANKED_TRADES = SpeedrunConfig.getBooleanValue("RANKED_TRADES", true);
 
     public static void log(Object msg) {
         LOGGER.log(Level.INFO, msg);
@@ -75,27 +78,6 @@ public class AreEssGee {
             }
         }
         return null;
-    }
-
-    static {
-        initConfig();
-    }
-
-    public static void initConfig() {
-        SpeedrunConfig.init();
-
-        ANTI_BASALT_REGION_SIZE = SpeedrunConfig.getIntValue("ANTI_BASALT_REGION_SIZE", 120);
-        ANTI_BASALT_REPLACEMENT = SpeedrunConfig.getStringValue("ANTI_BASALT_REPLACEMENT", "nether_wastes");
-        AFFECTED_STRUCTURES = SpeedrunConfig.getStringArrayValue("AFFECTED_STRUCTURES", "bastion_remnant", "fortress");
-        AFFECTED_STRUCTURE_RANDOM_OFFSET = SpeedrunConfig.getIntValue("AFFECTED_STRUCTURE_RANDOM_OFFSET", 3);
-        AFFECTED_STRUCTURE_RANDOM_BOUND = SpeedrunConfig.getIntValue("AFFECTED_STRUCTURE_RANDOM_BOUND", 4);
-        FLINT_MINIMUM_VALUE = SpeedrunConfig.getFloatValue("FLINT_MINIMUM_VALUE", 0.6F);
-        ROD_MINIMUM_VALUE = SpeedrunConfig.getFloatValue("ROD_MINIMUM_VALUE", 0.4F);
-        BURIED_TREASURE_RARITY = SpeedrunConfig.getFloatValue("BURIED_TREASURE_RARITY", 0.07F);
-        OCEAN_CANYON_RARITY = SpeedrunConfig.getFloatValue("OCEAN_CANYON_RARITY", 0.04F);
-        TREASURE_BASTION_GOLD_BLOCK_RARITY = SpeedrunConfig.getFloatValue("TREASURE_BASTION_GOLD_BLOCK_RARITY", 0.2F);
-        GUARANTEE_EYE_DROPS = SpeedrunConfig.getBooleanValue("GUARANTEE_EYE_DROPS", true);
-        ADD_BASALT_BASTIONS = SpeedrunConfig.getBooleanValue("ADD_BASALT_BASTIONS", true);
     }
 
     public static void onWorldCreate(long seed) {

@@ -1,3 +1,7 @@
 accessWidener v1 named
+
+accessible method net/minecraft/world/gen/chunk/ChunkGeneratorType <init> (Lnet/minecraft/world/gen/chunk/StructuresConfig;Lnet/minecraft/world/gen/chunk/NoiseConfig;Lnet/minecraft/block/BlockState;Lnet/minecraft/block/BlockState;IIIZLjava/util/Optional;)V
+
 accessible class net/minecraft/world/chunk/ChunkStatus$GenerationTask
 accessible class net/minecraft/world/chunk/ChunkStatus$LoadTask
+accessible class net/minecraft/structure/StrongholdGenerator$PieceSetting

@@ -4,24 +4,34 @@
   "package": "me.quesia.areessgee.mixin",
   "compatibilityLevel": "JAVA_8",
   "client": [
+    "access.PiglinBrainAccessor",
+
     "blocks.GravelBlockMixin",
+
+    "entities.ai.PiglinBrainMixin",
 
     "entities.BlazeEntityMixin",
     "entities.EyeOfEnderEntityMixin",
 
     "gui.CreateWorldScreenMixin",
+    "gui.DebugHudMixin",
 
     "nether.bastion.data.BastionTreasureDataMixin",
 
     "nether.biomes.BasaltDeltasBiomeMixin",
     "nether.biomes.MultiNoiseBiomeSourceMixin",
 
+    "nether.ChunkGeneratorTypePresetMixin",
     "nether.ChunkStatusMixin",
     "nether.StructureFeatureMixin",
 
+    "overworld.stronghold.PieceSettingMixin",
+    "overworld.stronghold.PortalRoomMixin",
+
     "overworld.BuriedTreasureFeatureConfigMixin",
     "overworld.CarverMixin",
-    "overworld.DefaultBiomeFeaturesMixin"
+    "overworld.DefaultBiomeFeaturesMixin",
+    "overworld.RavineCarverMixin"
   ],
   "injectors": {
     "defaultRequire": 1

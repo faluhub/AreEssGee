@@ -22,14 +22,11 @@ public abstract class GravelBlockMixin extends FallingBlock {
     @SuppressWarnings("deprecation")
     public List<ItemStack> getDroppedStacks(BlockState state, LootContext.Builder builder) {
         List<ItemStack> original = super.getDroppedStacks(state, builder);
+        if (original.isEmpty()) { return original; }
         int amount = 0;
-        if (original.get(0).getItem().equals(Items.FLINT)) {
-            amount += original.get(0).getCount() - 1;
-        }
+        if (original.get(0).getItem().equals(Items.FLINT)) { amount += original.get(0).getCount() - 1; }
         if (new Random().nextFloat() >= AreEssGee.FLINT_MINIMUM_VALUE) { amount++; }
-        if (amount != 0) {
-            return List.of(new ItemStack(Items.FLINT, amount));
-        }
+        if (amount != 0) { return List.of(new ItemStack(Items.FLINT, amount)); }
         return original;
     }
 }

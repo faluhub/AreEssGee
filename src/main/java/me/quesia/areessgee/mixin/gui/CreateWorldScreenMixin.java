@@ -15,11 +15,6 @@ public class CreateWorldScreenMixin {
     @Shadow @Final public MoreOptionsDialog moreOptionsDialog;
     @Shadow public boolean hardcore;
 
-    @Inject(method = "<init>*", at = @At("TAIL"))
-    private void initConfig(CallbackInfo ci) {
-        AreEssGee.initConfig();
-    }
-
     @Inject(method = "createLevel", at = @At("HEAD"))
     private void callEvent(CallbackInfo ci) {
         AreEssGee.onWorldCreate(this.moreOptionsDialog.getGeneratorOptions(this.hardcore).getSeed());
