@@ -17,8 +17,8 @@ import java.util.Random;
 
 public class AreEssGee {
     public static final ModContainer MOD_CONTAINER = FabricLoader.getInstance().getModContainer("areessgee").orElseThrow(RuntimeException::new);
-    public static final String LOGGER_NAME = MOD_CONTAINER.getMetadata().getName();
-    public static final Logger LOGGER = LogManager.getLogger(LOGGER_NAME);
+    public static final String MOD_NAME = MOD_CONTAINER.getMetadata().getName();
+    public static final Logger LOGGER = LogManager.getLogger(MOD_NAME);
 
     private static long SEED;
     private static Random RANDOM;
@@ -39,7 +39,6 @@ public class AreEssGee {
     public static final float EYE_ODDS = SpeedrunConfig.getFloatValue("EYE_ODDS", 0.8F);
     public static final boolean GUARANTEE_EYE_DROPS = SpeedrunConfig.getBooleanValue("GUARANTEE_EYE_DROPS", true);
     public static final boolean ADD_BASALT_BASTIONS = SpeedrunConfig.getBooleanValue("ADD_BASALT_BASTIONS", true);
-    public static final boolean RANKED_TRADES = SpeedrunConfig.getBooleanValue("RANKED_TRADES", true);
 
     public static void log(Object msg) {
         LOGGER.log(Level.INFO, msg);

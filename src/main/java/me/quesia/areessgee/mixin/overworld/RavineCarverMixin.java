@@ -1,6 +1,5 @@
 package me.quesia.areessgee.mixin.overworld;
 
-import me.quesia.areessgee.AreEssGee;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.chunk.Chunk;

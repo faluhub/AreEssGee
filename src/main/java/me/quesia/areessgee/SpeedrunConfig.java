@@ -10,7 +10,7 @@ import java.io.IOException;
 import java.util.*;
 
 public class SpeedrunConfig {
-    private static File FILE = FabricLoader.getInstance().getConfigDir().resolve("areessgee.json").toFile();
+    private static File FILE = FabricLoader.getInstance().getConfigDir().resolve(AreEssGee.MOD_NAME + ".json").toFile();
 
     public static void init() {
         if (!FILE.exists()) {

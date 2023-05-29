@@ -1,7 +1,6 @@
 package me.quesia.areessgee;
 
 import me.quesia.areessgee.mixin.access.PiglinBrainAccessor;
-import net.minecraft.entity.mob.PiglinBrain;
 import net.minecraft.entity.mob.PiglinEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
