@@ -15,7 +15,7 @@ public class EyeOfEnderEntityMixin {
 
     @Inject(method = "moveTowards", at = @At("TAIL"))
     private void neverBreak(BlockPos pos, CallbackInfo ci) {
-        if (AreEssGee.GUARANTEE_EYE_DROPS) {
+        if (AreEssGee.GUARANTEE_EYE_DROPS.getValue()) {
             this.dropsItem = true;
         }
     }

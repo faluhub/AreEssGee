@@ -25,7 +25,7 @@ public abstract class BlazeEntityMixin extends HostileEntity {
     private void dropFakeStack(ItemStack stack) {
         int amount = stack.getCount();
         if (amount != 0) { amount--; }
-        if (new Random().nextFloat() >= AreEssGee.ROD_MINIMUM_VALUE) { amount++; }
+        if (new Random().nextFloat() >= AreEssGee.ROD_MINIMUM_VALUE.getValue()) { amount++; }
         this.dropStack(new ItemStack(Items.BLAZE_ROD, amount));
     }
 

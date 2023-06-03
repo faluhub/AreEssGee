@@ -18,9 +18,9 @@ public class MultiNoiseBiomeSourceMixin {
     @Inject(method = "getBiomeForNoiseGen", at = @At("RETURN"), cancellable = true)
     private void removeBasaltRegion(int biomeX, int biomeY, int biomeZ, CallbackInfoReturnable<Biome> cir) {
         if (cir.getReturnValue().equals(Biomes.BASALT_DELTAS)) {
-            int limit = AreEssGee.ANTI_BASALT_REGION_SIZE;
+            int limit = AreEssGee.ANTI_BASALT_REGION_SIZE.getValue();
             if ((biomeX <= 0 && biomeX > -limit) || (biomeX >= 0 && biomeX < limit) || (biomeZ <= 0 && biomeZ > -limit) || (biomeZ >= 0 && biomeZ < limit)) {
-                String biomeName = AreEssGee.ANTI_BASALT_REPLACEMENT;
+                String biomeName = AreEssGee.ANTI_BASALT_REPLACEMENT.getValue();
                 Biome biome = Registry.BIOME.get(new Identifier(biomeName.toLowerCase(Locale.ROOT)));
                 cir.setReturnValue(biome);
             }

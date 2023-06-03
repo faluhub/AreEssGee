@@ -17,7 +17,7 @@ public abstract class BasaltDeltasBiomeMixin extends Biome {
 
     @Inject(method = "<init>", at = @At("TAIL"))
     private void addBastion(CallbackInfo ci) {
-        if (AreEssGee.ADD_BASALT_BASTIONS) {
+        if (AreEssGee.ADD_BASALT_BASTIONS.getValue()) {
             this.addStructureFeature(DefaultBiomeFeatures.BASTION_REMNANT);
         }
     }

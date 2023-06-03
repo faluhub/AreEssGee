@@ -22,6 +22,6 @@ public class DefaultBiomeFeaturesMixin {
             )
     )
     private static void moreOceanRavines(Biome instance, GenerationStep.Carver step, ConfiguredCarver<?> configuredCarver) {
-        instance.addCarver(step, Biome.configureCarver(Carver.UNDERWATER_CANYON, new ProbabilityConfig(AreEssGee.OCEAN_CANYON_RARITY)));
+        instance.addCarver(step, Biome.configureCarver(Carver.UNDERWATER_CANYON, new ProbabilityConfig(AreEssGee.OCEAN_CANYON_RARITY.getValue())));
     }
 }

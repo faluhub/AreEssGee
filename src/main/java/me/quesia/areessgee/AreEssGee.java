@@ -1,5 +1,7 @@
 package me.quesia.areessgee;
 
+import me.quesia.areessgee.config.ConfigValue;
+import me.quesia.areessgee.config.list.StringList;
 import net.fabricmc.loader.api.FabricLoader;
 import net.fabricmc.loader.api.ModContainer;
 
@@ -25,20 +27,20 @@ public class AreEssGee {
     public static final List<StructureFeature<?>> PLACED_STRUCTURES = new ArrayList<>();
     public static final List<ChunkPos> USED_QUADRANTS = new ArrayList<>();
 
-    public static final int ANTI_BASALT_REGION_SIZE = SpeedrunConfig.getIntValue("ANTI_BASALT_REGION_SIZE", 120);
-    public static final String ANTI_BASALT_REPLACEMENT = SpeedrunConfig.getStringValue("ANTI_BASALT_REPLACEMENT", "nether_wastes");
-    public static final List<String> AFFECTED_STRUCTURES = SpeedrunConfig.getStringArrayValue("AFFECTED_STRUCTURES", "bastion_remnant", "fortress");
-    public static final int AFFECTED_STRUCTURE_RANDOM_OFFSET = SpeedrunConfig.getIntValue("AFFECTED_STRUCTURE_RANDOM_OFFSET", 3);
-    public static final int AFFECTED_STRUCTURE_RANDOM_BOUND = SpeedrunConfig.getIntValue("AFFECTED_STRUCTURE_RANDOM_BOUND", 4);
-    public static final int MAX_GLOBAL_STRONGHOLD_ROOM_LIMIT = SpeedrunConfig.getIntValue("MAX_GLOBAL_STRONGHOLD_ROOM_LIMIT", 10);
-    public static final float FLINT_MINIMUM_VALUE = SpeedrunConfig.getFloatValue("FLINT_MINIMUM_VALUE", 0.6F);
-    public static final float ROD_MINIMUM_VALUE = SpeedrunConfig.getFloatValue("ROD_MINIMUM_VALUE", 0.4F);
-    public static final float BURIED_TREASURE_RARITY = SpeedrunConfig.getFloatValue("BURIED_TREASURE_RARITY", 0.07F);
-    public static final float OCEAN_CANYON_RARITY = SpeedrunConfig.getFloatValue("OCEAN_CANYON_RARITY", 0.04F);
-    public static final float TREASURE_BASTION_GOLD_BLOCK_RARITY = SpeedrunConfig.getFloatValue("TREASURE_BASTION_GOLD_BLOCK_RARITY", 0.2F);
-    public static final float EYE_ODDS = SpeedrunConfig.getFloatValue("EYE_ODDS", 0.8F);
-    public static final boolean GUARANTEE_EYE_DROPS = SpeedrunConfig.getBooleanValue("GUARANTEE_EYE_DROPS", true);
-    public static final boolean ADD_BASALT_BASTIONS = SpeedrunConfig.getBooleanValue("ADD_BASALT_BASTIONS", true);
+    public static final ConfigValue<StringList> AFFECTED_STRUCTURES = new ConfigValue<>("AFFECTED_STRUCTURES", new StringList("bastion_remnant", "fortress"));
+    public static final ConfigValue<String> ANTI_BASALT_REPLACEMENT = new ConfigValue<>("ANTI_BASALT_REPLACEMENT", "nether_wastes");
+    public static final ConfigValue<Integer> ANTI_BASALT_REGION_SIZE = new ConfigValue<>("ANTI_BASALT_REGION_SIZE", 120);
+    public static final ConfigValue<Integer> AFFECTED_STRUCTURE_RANDOM_OFFSET = new ConfigValue<>("AFFECTED_STRUCTURE_RANDOM_OFFSET", 3);
+    public static final ConfigValue<Integer> AFFECTED_STRUCTURE_RANDOM_BOUND = new ConfigValue<>("AFFECTED_STRUCTURE_RANDOM_BOUND", 4);
+    public static final ConfigValue<Integer> MAX_GLOBAL_STRONGHOLD_ROOM_LIMIT = new ConfigValue<>("MAX_GLOBAL_STRONGHOLD_ROOM_LIMIT", 10);
+    public static final ConfigValue<Float> FLINT_MINIMUM_VALUE = new ConfigValue<>("FLINT_MINIMUM_VALUE", 0.6F);
+    public static final ConfigValue<Float> ROD_MINIMUM_VALUE = new ConfigValue<>("ROD_MINIMUM_VALUE", 0.4F);
+    public static final ConfigValue<Float> BURIED_TREASURE_RARITY = new ConfigValue<>("BURIED_TREASURE_RARITY", 0.07F);
+    public static final ConfigValue<Float> OCEAN_CANYON_RARITY = new ConfigValue<>("OCEAN_CANYON_RARITY", 0.04F);
+    public static final ConfigValue<Float> TREASURE_BASTION_GOLD_BLOCK_RARITY = new ConfigValue<>("TREASURE_BASTION_GOLD_BLOCK_RARITY", 0.2F);
+    public static final ConfigValue<Float> PORTAL_EYE_ODDS = new ConfigValue<>("PORTAL_EYE_ODDS", 0.8F);
+    public static final ConfigValue<Boolean> GUARANTEE_EYE_DROPS = new ConfigValue<>("GUARANTEE_EYE_DROPS", true);
+    public static final ConfigValue<Boolean> ADD_BASALT_BASTIONS = new ConfigValue<>("ADD_BASALT_BASTIONS", true);
 
     public static void log(Object msg) {
         LOGGER.log(Level.INFO, msg);
@@ -62,8 +64,8 @@ public class AreEssGee {
             boolean b = new Random(SEED).nextBoolean();
             quadrant = new ChunkPos(quadrant.x * (b ? 1 : -1), quadrant.z * (b ? -1 : 1));
         }
-        int cx = quadrant.x * (RANDOM.nextInt(AFFECTED_STRUCTURE_RANDOM_BOUND) + AFFECTED_STRUCTURE_RANDOM_OFFSET);
-        int cz = quadrant.z * (RANDOM.nextInt(AFFECTED_STRUCTURE_RANDOM_BOUND) + AFFECTED_STRUCTURE_RANDOM_OFFSET);
+        int cx = quadrant.x * (RANDOM.nextInt(AFFECTED_STRUCTURE_RANDOM_BOUND.getValue()) + AFFECTED_STRUCTURE_RANDOM_OFFSET.getValue());
+        int cz = quadrant.z * (RANDOM.nextInt(AFFECTED_STRUCTURE_RANDOM_BOUND.getValue()) + AFFECTED_STRUCTURE_RANDOM_OFFSET.getValue());
         return new ChunkPos(cx, cz);
     }
 

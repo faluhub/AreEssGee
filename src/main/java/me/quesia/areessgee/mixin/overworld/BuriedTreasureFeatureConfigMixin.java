@@ -16,6 +16,6 @@ public class BuriedTreasureFeatureConfigMixin {
 
     @Inject(method = "<init>", at = @At("TAIL"))
     private void moreBt(float probability, CallbackInfo ci) {
-        this.probability = AreEssGee.BURIED_TREASURE_RARITY;
+        this.probability = AreEssGee.BURIED_TREASURE_RARITY.getValue();
     }
 }

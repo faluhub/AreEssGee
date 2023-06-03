@@ -10,6 +10,6 @@ import org.spongepowered.asm.mixin.injection.ModifyConstant;
 public class BastionTreasureDataMixin {
     @ModifyConstant(method = "<clinit>", constant = @Constant(floatValue = 0.3f, ordinal = 3))
     private static float moreGold(float constant) {
-        return AreEssGee.TREASURE_BASTION_GOLD_BLOCK_RARITY;
+        return AreEssGee.TREASURE_BASTION_GOLD_BLOCK_RARITY.getValue();
     }
 }

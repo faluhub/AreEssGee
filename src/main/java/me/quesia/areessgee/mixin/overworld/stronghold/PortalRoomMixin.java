@@ -10,6 +10,6 @@ import org.spongepowered.asm.mixin.injection.ModifyConstant;
 public class PortalRoomMixin {
     @ModifyConstant(method = "generate", constant = @Constant(floatValue = 0.9F, ordinal = 0))
     private float higherEyeChance(float constant) {
-        return AreEssGee.EYE_ODDS;
+        return AreEssGee.PORTAL_EYE_ODDS.getValue();
     }
 }

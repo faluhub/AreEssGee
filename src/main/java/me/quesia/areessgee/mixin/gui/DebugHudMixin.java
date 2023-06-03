@@ -1,5 +1,6 @@
 package me.quesia.areessgee.mixin.gui;
 
+import me.quesia.areessgee.AreEssGee;
 import net.minecraft.client.gui.hud.DebugHud;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
@@ -14,7 +15,7 @@ public class DebugHudMixin {
     private void addDebugText(CallbackInfoReturnable<List<String>> cir) {
         List<String> list = cir.getReturnValue();
         list.add("");
-        list.add("CHEATING!");
+        list.add("CHEATING! v" + AreEssGee.MOD_CONTAINER.getMetadata().getVersion().getFriendlyString());
         cir.setReturnValue(list);
     }
 }

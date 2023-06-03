@@ -21,8 +21,8 @@ import java.util.List;
 import java.util.concurrent.CompletableFuture;
 import java.util.function.Function;
 
-@Mixin(ChunkStatus.class)
 @SuppressWarnings("SameParameterValue")
+@Mixin(ChunkStatus.class)
 public abstract class ChunkStatusMixin {
     @SuppressWarnings("SameReturnValue") @Shadow private static ChunkStatus register(String id, @Nullable ChunkStatus previous, int taskMargin, EnumSet<Heightmap.Type> heightMapTypes, ChunkStatus.ChunkType chunkType, ChunkStatus.GenerationTask task) { return null; }
     @Shadow @Final public static ChunkStatus EMPTY;

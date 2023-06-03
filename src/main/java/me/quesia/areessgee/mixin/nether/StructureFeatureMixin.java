@@ -29,7 +29,7 @@ public abstract class StructureFeatureMixin<C extends FeatureConfig> {
     @Shadow protected abstract boolean shouldStartAt(ChunkGenerator chunkGenerator, BiomeSource biomeSource, long l, ChunkRandom chunkRandom, int i, int j, Biome biome, ChunkPos chunkPos, C featureConfig);
 
     private boolean isAffected() {
-        return AreEssGee.AFFECTED_STRUCTURES.contains(this.getName().toLowerCase(Locale.ROOT));
+        return AreEssGee.AFFECTED_STRUCTURES.getValue().contains(this.getName().toLowerCase(Locale.ROOT));
     }
 
     @Inject(method = "method_27218", at = @At("RETURN"), cancellable = true)
@@ -65,7 +65,7 @@ public abstract class StructureFeatureMixin<C extends FeatureConfig> {
                 return false;
             }
 
-            if (!shouldGenerate && AreEssGee.AFFECTED_STRUCTURES.size() - AreEssGee.PLACED_STRUCTURES.size() == 1) {
+            if (!shouldGenerate && AreEssGee.AFFECTED_STRUCTURES.getValue().size() - AreEssGee.PLACED_STRUCTURES.size() == 1) {
                 shouldGenerate = true;
             }
 

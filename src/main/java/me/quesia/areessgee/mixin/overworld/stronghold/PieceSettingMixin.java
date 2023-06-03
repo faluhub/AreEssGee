@@ -16,8 +16,8 @@ public class PieceSettingMixin {
 
     @Inject(method = "<init>", at = @At("TAIL"))
     private void modifyMaxRooms(Class<?> class_, int i, int j, CallbackInfo ci) {
-        if (AreEssGee.MAX_GLOBAL_STRONGHOLD_ROOM_LIMIT > 0) {
-            this.limit = Math.min(this.limit, AreEssGee.MAX_GLOBAL_STRONGHOLD_ROOM_LIMIT);
+        if (AreEssGee.MAX_GLOBAL_STRONGHOLD_ROOM_LIMIT.getValue() > 0) {
+            this.limit = Math.min(this.limit, AreEssGee.MAX_GLOBAL_STRONGHOLD_ROOM_LIMIT.getValue());
         }
     }
 }

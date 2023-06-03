@@ -25,7 +25,7 @@ public abstract class GravelBlockMixin extends FallingBlock {
         if (original.isEmpty()) { return original; }
         int amount = 0;
         if (original.get(0).getItem().equals(Items.FLINT)) { amount += original.get(0).getCount() - 1; }
-        if (new Random().nextFloat() >= AreEssGee.FLINT_MINIMUM_VALUE) { amount++; }
+        if (new Random().nextFloat() >= AreEssGee.FLINT_MINIMUM_VALUE.getValue()) { amount++; }
         if (amount != 0) { return List.of(new ItemStack(Items.FLINT, amount)); }
         return original;
     }
