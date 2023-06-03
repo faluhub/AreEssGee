@@ -13,6 +13,7 @@ import net.minecraft.world.chunk.ChunkStatus;
 import net.minecraft.world.gen.feature.StructureFeature;
 import org.apache.logging.log4j.*;
 
+import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -38,7 +39,7 @@ public class AreEssGee {
     public static final ConfigValue<Float> BURIED_TREASURE_RARITY = new ConfigValue<>("BURIED_TREASURE_RARITY", 0.07F);
     public static final ConfigValue<Float> OCEAN_CANYON_RARITY = new ConfigValue<>("OCEAN_CANYON_RARITY", 0.04F);
     public static final ConfigValue<Float> TREASURE_BASTION_GOLD_BLOCK_RARITY = new ConfigValue<>("TREASURE_BASTION_GOLD_BLOCK_RARITY", 0.2F);
-    public static final ConfigValue<Float> PORTAL_EYE_ODDS = new ConfigValue<>("PORTAL_EYE_ODDS", 0.8F);
+    public static final ConfigValue<Float> PORTAL_EYE_ODDS = new ConfigValue<>("PORTAL_EYE_ODDS", 0.9F);
     public static final ConfigValue<Boolean> GUARANTEE_EYE_DROPS = new ConfigValue<>("GUARANTEE_EYE_DROPS", true);
     public static final ConfigValue<Boolean> ADD_BASALT_BASTIONS = new ConfigValue<>("ADD_BASALT_BASTIONS", true);
 

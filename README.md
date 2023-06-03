@@ -93,7 +93,7 @@ Vanilla: 0.3
 ```
 PORTAL_EYE_ODDS
 Description: The chance of an eye generating in an end portal frame. (Lower = better)
-Default: 0.8
+Default: 0.9
 Vanilla: 0.9
 ```
 

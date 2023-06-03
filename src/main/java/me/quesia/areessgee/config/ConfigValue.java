@@ -29,6 +29,10 @@ public class ConfigValue<T> {
         return this.value;
     }
 
+    public boolean hasChanged() {
+        return !this.value.equals(this.def);
+    }
+
     private JsonElement getElement() {
         JsonObject config = SpeedrunConfig.get();
         return config.get(this.key);
