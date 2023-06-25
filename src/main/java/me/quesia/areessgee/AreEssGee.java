@@ -1,7 +1,6 @@
 package me.quesia.areessgee;
 
 import me.quesia.areessgee.config.ConfigValue;
-import me.quesia.areessgee.config.list.StringList;
 import net.fabricmc.loader.api.FabricLoader;
 import net.fabricmc.loader.api.ModContainer;
 
@@ -13,7 +12,6 @@ import net.minecraft.world.chunk.ChunkStatus;
 import net.minecraft.world.gen.feature.StructureFeature;
 import org.apache.logging.log4j.*;
 
-import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -28,7 +26,7 @@ public class AreEssGee {
     public static final List<StructureFeature<?>> PLACED_STRUCTURES = new ArrayList<>();
     public static final List<ChunkPos> USED_QUADRANTS = new ArrayList<>();
 
-    public static final ConfigValue<StringList> AFFECTED_STRUCTURES = new ConfigValue<>("AFFECTED_STRUCTURES", new StringList("bastion_remnant", "fortress"));
+    public static final ConfigValue<List<String>> AFFECTED_STRUCTURES = new ConfigValue<>("AFFECTED_STRUCTURES", List.of("bastion_remnant", "fortress"));
     public static final ConfigValue<String> ANTI_BASALT_REPLACEMENT = new ConfigValue<>("ANTI_BASALT_REPLACEMENT", "nether_wastes");
     public static final ConfigValue<Integer> ANTI_BASALT_REGION_SIZE = new ConfigValue<>("ANTI_BASALT_REGION_SIZE", 120);
     public static final ConfigValue<Integer> AFFECTED_STRUCTURE_RANDOM_OFFSET = new ConfigValue<>("AFFECTED_STRUCTURE_RANDOM_OFFSET", 3);

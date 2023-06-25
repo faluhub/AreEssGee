@@ -8,7 +8,7 @@ import org.spongepowered.asm.mixin.injection.ModifyConstant;
 
 @Mixin(BastionTreasureData.class)
 public class BastionTreasureDataMixin {
-    @ModifyConstant(method = "<clinit>", constant = @Constant(floatValue = 0.3f, ordinal = 3))
+    @ModifyConstant(method = "<clinit>", constant = @Constant(floatValue = 0.3F, ordinal = 3))
     private static float moreGold(float constant) {
         return AreEssGee.TREASURE_BASTION_GOLD_BLOCK_RARITY.getValue();
     }

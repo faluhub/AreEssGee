@@ -12,6 +12,7 @@
 
     "entities.BlazeEntityMixin",
     "entities.EyeOfEnderEntityMixin",
+    "entities.ZombifiedPiglinEntityMixin",
 
     "gui.CreateWorldScreenMixin",
     "gui.DebugHudMixin",
