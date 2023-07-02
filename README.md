@@ -2,11 +2,39 @@
 
 The best cheating mod for MCSR.
 
-## How to detect:
+# Anti-Cheat
 
 Look at F3 screen, it will say `CHEATING!` on the right side.
 
-# Config
+Below that, it will also say either `true` or `false`, depending on whether the player changed config values regarding which change world generation.
+This exists for the leaderboard.
+
+# Features
+
+### Loot Tables:
+- Guaranteed 7+ iron in buried treasure chests.
+- More obsidian in bastion chests.
+- Boosted piglin trades. *(They're supposed to be guaranteed but doesn't work every time.)*
+- Configurable flint rates.
+- Configurable blaze rod rates.
+
+### World & Structure Generation:
+- Configurable treasure gold block rates.
+- Configurable bastions in basalt deltas.
+- Configurable region centered around 0, 0 where basalt deltas don't generate.
+- More open terrain.
+- Generates configured structures at a configured offset from `0, 0`.
+- Configurable max amount of times a single stronghold room can generate.
+- Configurable chance of an eye of ender generating in a portal frame.
+- Configurable buried treasure rarity.
+- Ocean ravines always go down to y level `1`. *(This is the lowest they go in vanilla)*
+- Configurable ocean ravine rarity.
+- Wider ocean ravines.
+
+### Other:
+- Whether eyes of ender drop their item.
+
+# Config Values
 
 The config file can be found at `.minecraft/config/AreEssGee.json`.
 
@@ -55,6 +83,8 @@ Default: 10
 Vanilla: -1
 ```
 
+<div id="flint_minimum_value">
+
 ```
 FLINT_MINIMUM_VALUE
 Description: The minimum value the random number from 0 to 1 has to be to make a gravel block drop flint. (Lower = better)
@@ -62,12 +92,18 @@ Default: 0.6
 Vanilla: 0.9
 ```
 
+</div>
+
+<div id="rod_minimum_value">
+
 ```
 ROD_MINIMUM_VALUE
 Description: The minimum value the random number from 0 to 1 has to be to make a blaze drop a blaze rod. (Lower = better)
 Default: 0.4
 Vanilla: 0.5
 ```
+
+</div>
 
 ```
 BURIED_TREASURE_RARITY
