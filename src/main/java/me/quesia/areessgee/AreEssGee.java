@@ -1,5 +1,6 @@
 package me.quesia.areessgee;
 
+import com.google.common.collect.Lists;
 import me.quesia.areessgee.config.ConfigValue;
 import net.fabricmc.loader.api.FabricLoader;
 import net.fabricmc.loader.api.ModContainer;
@@ -26,7 +27,7 @@ public class AreEssGee {
     public static final List<StructureFeature<?>> PLACED_STRUCTURES = new ArrayList<>();
     public static final List<ChunkPos> USED_QUADRANTS = new ArrayList<>();
 
-    public static final ConfigValue<List<String>> AFFECTED_STRUCTURES = new ConfigValue<>("AFFECTED_STRUCTURES", List.of("bastion_remnant", "fortress"));
+    public static final ConfigValue<List<String>> AFFECTED_STRUCTURES = new ConfigValue<>("AFFECTED_STRUCTURES", Lists.newArrayList("bastion_remnant", "fortress"));
     public static final ConfigValue<String> ANTI_BASALT_REPLACEMENT = new ConfigValue<>("ANTI_BASALT_REPLACEMENT", "nether_wastes");
     public static final ConfigValue<Integer> ANTI_BASALT_REGION_SIZE = new ConfigValue<>("ANTI_BASALT_REGION_SIZE", 120);
     public static final ConfigValue<Integer> AFFECTED_STRUCTURE_RANDOM_OFFSET = new ConfigValue<>("AFFECTED_STRUCTURE_RANDOM_OFFSET", 3);

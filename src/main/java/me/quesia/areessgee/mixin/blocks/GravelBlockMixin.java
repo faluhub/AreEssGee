@@ -1,5 +1,6 @@
 package me.quesia.areessgee.mixin.blocks;
 
+import com.google.common.collect.Lists;
 import me.quesia.areessgee.AreEssGee;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.FallingBlock;
@@ -26,7 +27,7 @@ public abstract class GravelBlockMixin extends FallingBlock {
         int amount = 0;
         if (original.get(0).getItem().equals(Items.FLINT)) { amount += original.get(0).getCount() - 1; }
         if (new Random().nextFloat() >= AreEssGee.FLINT_MINIMUM_VALUE.getValue()) { amount++; }
-        if (amount != 0) { return List.of(new ItemStack(Items.FLINT, amount)); }
+        if (amount != 0) { return Lists.newArrayList(new ItemStack(Items.FLINT, amount)); }
         return original;
     }
 }

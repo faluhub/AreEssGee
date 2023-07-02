@@ -1,5 +1,6 @@
 package me.quesia.areessgee.mixin.gui;
 
+import com.google.common.collect.Lists;
 import me.quesia.areessgee.AreEssGee;
 import me.quesia.areessgee.config.ConfigValue;
 import net.minecraft.client.gui.hud.DebugHud;
@@ -13,7 +14,7 @@ import java.util.List;
 
 @Mixin(DebugHud.class)
 public class DebugHudMixin {
-    private static final List<ConfigValue<?>> RNG_VALUES = List.of(AreEssGee.FLINT_MINIMUM_VALUE, AreEssGee.ROD_MINIMUM_VALUE, AreEssGee.GUARANTEE_EYE_DROPS);
+    private static final List<ConfigValue<?>> RNG_VALUES = Lists.newArrayList(AreEssGee.FLINT_MINIMUM_VALUE, AreEssGee.ROD_MINIMUM_VALUE, AreEssGee.GUARANTEE_EYE_DROPS);
     private static boolean HAS_MODIFIED_OTHER = false;
 
     static {

@@ -9,7 +9,6 @@ import org.apache.commons.lang3.ClassUtils;
 import java.io.Serializable;
 import java.lang.reflect.*;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class ConfigValue<T> {
@@ -25,45 +24,48 @@ public class ConfigValue<T> {
 
         Class<?> type = this.def.getClass();
         if (!(def instanceof List)) {
-            Method elementMethod = this.getElementMethod(type, element);
-            if (elementMethod != null) {
-                T temp = null;
-                if (element == null || element.isJsonNull()) {
-                    JsonObject config = SpeedrunConfig.get();
-                    Method propertyMethod = this.getPropertyMethod(type, config);
-                    if (propertyMethod != null) {
-                        try {
-                            propertyMethod.invoke(config, this.key, this.def);
-                            SpeedrunConfig.write(config);
-                            temp = this.def;
-                        } catch (Exception e) { AreEssGee.LOGGER.error("Occurrence 1", e); }
-                    }
+            T temp = null;
+            if (element == null || element.isJsonNull()) {
+                JsonObject config = SpeedrunConfig.get();
+                Method addMethod = this.getAddMethod(type, config);
+                if (addMethod != null) {
+                    try {
+                        addMethod.invoke(config, this.key, this.def);
+                        SpeedrunConfig.write(config);
+                        temp = this.def;
+                    } catch (Exception e) { AreEssGee.LOGGER.error("Occurrence 1", e); }
                 }
-                if (temp == null) {
+            }
+            if (temp == null && element != null) {
+                Method elementMethod = this.getElementMethod(type, element);
+                if (elementMethod != null) {
                     try { temp = (T) elementMethod.invoke(element); }
                     catch (Exception e) { AreEssGee.LOGGER.error("Occurrence 2", e); }
                 }
-                if (temp != null) { this.value = temp; }
             }
+            if (temp != null) { this.value = temp; }
         } else {
             if (element == null || element.isJsonNull()) {
                 JsonObject config = SpeedrunConfig.get();
                 JsonArray array = new JsonArray();
-                for (Method method : JsonArray.class.getDeclaredMethods()) {
-                    if (method.getName().equalsIgnoreCase("add")) {
-                        if (method.getParameterCount() > 0 && method.getParameterTypes()[0].isInstance(type)) {
-                            for (T value : (ArrayList<T>) this.def) {
-                                try { method.invoke(array, value); }
-                                catch (Exception e) { AreEssGee.LOGGER.error("Occurrence 3", e); }
+                List<?> list = (List<?>) this.def;
+                if (!list.isEmpty()) {
+                    type = list.get(0).getClass();
+                    for (Method method : JsonArray.class.getDeclaredMethods()) {
+                        if (method.getName().equalsIgnoreCase("add")) {
+                            if (method.getParameterCount() > 0 && method.getParameterTypes()[0].isAssignableFrom(type)) {
+                                for (Object value : list) {
+                                    try { method.invoke(array, value); }
+                                    catch (Exception e) { AreEssGee.LOGGER.error("Occurrence 3", e); }
+                                }
+                                break;
                             }
-                            config.add(this.key, array);
-                            SpeedrunConfig.write(config);
-                            this.value = this.def;
-                            return;
                         }
                     }
                 }
-                this.value = null;
+                config.add(this.key, array);
+                SpeedrunConfig.write(config);
+                this.value = this.def;
                 return;
             }
             try {
@@ -108,11 +110,11 @@ public class ConfigValue<T> {
         return null;
     }
 
-    private Method getPropertyMethod(Class<?> type, JsonObject object) {
+    private Method getAddMethod(Class<?> type, JsonObject object) {
         for (Method method : JsonObject.class.getDeclaredMethods()) {
             if (method.getName().equalsIgnoreCase("addProperty")) {
                 if (method.canAccess(object) && method.getParameterCount() >= 2) {
-                    if (method.getParameterTypes()[1].isInstance(type)) {
+                    if (method.getParameterTypes()[1].isAssignableFrom(type)) {
                         return method;
                     }
                 }
@@ -130,7 +132,7 @@ public class ConfigValue<T> {
     }
 
     public boolean hasChanged() {
-        return !this.def.equals(this.value);
+        return !this.getDefault().equals(this.value);
     }
 
     private JsonElement getElement() {
