@@ -30,6 +30,8 @@ dependencies {
 	mappings "net.fabricmc:yarn:${project.yarn_mappings}:v2"
 	modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
 	modImplementation "com.github.KingContaria:SpeedrunAPI:a3e3998294"
+	modIncludeImplementation(fabricApi.module("fabric-api-base", project.fabric_version))
+	modIncludeImplementation(fabricApi.module("fabric-resource-loader-v0", project.fabric_version))
 }
 
 processResources {
