@@ -17,12 +17,14 @@
       "config": "me.falu.areessgee.AreEssGeeConfig"
     }
   },
+  "icon": "assets/areessgee/icon.png",
   "environment": "client",
   "mixins": [
     "areessgee.mixins.json"
   ],
   "depends": {
-    "minecraft": "1.16.1"
+    "minecraft": "1.16.1",
+    "speedrunapi": ">=1.0"
   },
   "breaks": {
     "pogworld": "*"

@@ -1,5 +1,6 @@
 package me.falu.areessgee;
 
+import net.minecraft.client.MinecraftClient;
 import org.mcsr.speedrunapi.config.SpeedrunConfigContainer;
 import org.mcsr.speedrunapi.config.api.SpeedrunConfig;
 import org.mcsr.speedrunapi.config.api.annotations.Config;
@@ -22,10 +23,10 @@ public class AreEssGeeConfig implements SpeedrunConfig {
     public boolean basaltBastions = true;
     @Config.Category("luck")
     @Config.Numbers.Fractional.Bounds(min = 0.0F, max = 1.0F)
-    public float flintRarity = 0.6F;
+    public float flintRarity = 0.0F;
     @Config.Category("luck")
     @Config.Numbers.Fractional.Bounds(min = 0.0F, max = 1.0F)
-    public float rodRarity = 0.4F;
+    public float rodRarity = 0.0F;
     @Config.Category("luck")
     @Config.Numbers.Fractional.Bounds(min = 0.0F, max = 1.0F)
     public float buriedTreasureRarity = 0.07F;
@@ -53,12 +54,17 @@ public class AreEssGeeConfig implements SpeedrunConfig {
     }
 
     @Override
-    public String modID() {
-        return AreEssGee.MOD_CONTAINER.getMetadata().getId();
+    public boolean isAvailable() {
+        return MinecraftClient.getInstance().world == null;
     }
 
     @Override
     public void finishInitialization(SpeedrunConfigContainer<?> container) {
         this.container = container;
+    }
+
+    @Override
+    public String modID() {
+        return AreEssGee.MOD_CONTAINER.getMetadata().getId();
     }
 }
