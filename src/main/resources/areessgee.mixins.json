@@ -1,10 +1,13 @@
 {
   "required": true,
   "minVersion": "0.8",
-  "package": "me.quesia.areessgee.mixin",
+  "package": "me.falu.areessgee.mixin",
   "compatibilityLevel": "JAVA_8",
   "client": [
     "access.PiglinBrainAccessor",
+    "access.RuleStructureProcessorAccessor",
+    "access.SinglePoolElementAccessor",
+    "access.StructurePoolAccessor",
 
     "blocks.GravelBlockMixin",
 
@@ -17,11 +20,10 @@
     "gui.CreateWorldScreenMixin",
     "gui.DebugHudMixin",
 
-    "nether.bastion.data.BastionTreasureDataMixin",
-
     "nether.biomes.BasaltDeltasBiomeMixin",
     "nether.biomes.MultiNoiseBiomeSourceMixin",
 
+    "nether.BiomeMixin",
     "nether.ChunkGeneratorTypePresetMixin",
     "nether.ChunkStatusMixin",
     "nether.StructureFeatureMixin",
@@ -29,10 +31,11 @@
     "overworld.stronghold.PieceSettingMixin",
     "overworld.stronghold.PortalRoomMixin",
 
-    "overworld.BuriedTreasureFeatureConfigMixin",
+    "overworld.BuriedTreasureFeatureMixin",
     "overworld.CarverMixin",
-    "overworld.DefaultBiomeFeaturesMixin",
-    "overworld.RavineCarverMixin"
+    "overworld.RavineCarverMixin",
+
+    "StructurePoolRegistryMixin"
   ],
   "injectors": {
     "defaultRequire": 1

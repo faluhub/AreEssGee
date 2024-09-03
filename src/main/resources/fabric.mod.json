@@ -4,17 +4,27 @@
   "version": "${version}",
   "name": "AreEssGee",
   "description": "Are Ess Gee (RSG)",
-  "authors": ["Quesia"],
+  "authors": [
+    "falu"
+  ],
   "contact": {
-    "homepage": "https://github.com/QuesiaSR"
+    "homepage": "https://github.com/faluhub/areessgee"
   },
   "accessWidener": "areessgee.accesswidener",
   "license": "MIT",
-  "icon": "assets/areessgee/icon.png",
+  "custom": {
+    "speedrunapi": {
+      "config": "me.falu.areessgee.AreEssGeeConfig"
+    }
+  },
   "environment": "client",
-  "mixins": ["areessgee.mixins.json"],
+  "mixins": [
+    "areessgee.mixins.json"
+  ],
   "depends": {
     "minecraft": "1.16.1"
   },
-  "breaks": {}
+  "breaks": {
+    "pogworld": "*"
+  }
 }

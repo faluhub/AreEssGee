@@ -1,0 +1,21 @@
+{
+  "speedrunapi.config.areessgee.category.position": "Position",
+  "speedrunapi.config.areessgee.category.basalt": "Basalt",
+  "speedrunapi.config.areessgee.category.luck": "Luck",
+  "speedrunapi.config.areessgee.category.misc": "Misc.",
+
+  "speedrunapi.config.areessgee.option.randomOffset": "Min. Random Offset",
+  "speedrunapi.config.areessgee.option.randomBound": "Random Max. Bound",
+  "speedrunapi.config.areessgee.option.basaltReplacement": "Basalt Repl. Biome",
+  "speedrunapi.config.areessgee.option.basaltReplacementRange": "Basalt Repl. Range",
+  "speedrunapi.config.areessgee.option.basaltBastions": "Basalt Bastions",
+  "speedrunapi.config.areessgee.option.flintRarity": "Flint Rarity",
+  "speedrunapi.config.areessgee.option.rodRarity": "Rod Rarity",
+  "speedrunapi.config.areessgee.option.buriedTreasureRarity": "Buried Treasure Rarity",
+  "speedrunapi.config.areessgee.option.oceanRavineRarity": "Ocean Ravine Rarity",
+  "speedrunapi.config.areessgee.option.treasureGoldRarity": "Treasure Gold Rarity",
+  "speedrunapi.config.areessgee.option.portalEyeRarity": "Portal Eye Rarity",
+  "speedrunapi.config.areessgee.option.guaranteeEyeDrops": "Guarantee Eye Drops",
+  "speedrunapi.config.areessgee.option.maxStrongholdDepth": "Max. Stronghold Depth",
+  "speedrunapi.config.areessgee.option.openNetherTerrain": "Open Nether Terrain"
+}
