@@ -9,7 +9,7 @@ import net.minecraft.client.MinecraftClient;
 public class AreEssGeeConfig implements SpeedrunConfig {
     @Config.Category("position")
     @Config.Numbers.Whole.Bounds(min = 1, max = 10)
-    public int randomOffset = 3;
+    public int randomOffset = 4;
     @Config.Category("position")
     @Config.Numbers.Whole.Bounds(min = 1, max = 6)
     public int randomBound = 4;
