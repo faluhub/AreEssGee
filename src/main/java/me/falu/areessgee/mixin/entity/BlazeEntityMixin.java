@@ -1,4 +1,4 @@
-package me.falu.areessgee.mixin.entities;
+package me.falu.areessgee.mixin.entity;
 
 import me.falu.areessgee.AreEssGee;
 import net.minecraft.entity.EntityType;
@@ -14,8 +14,6 @@ import net.minecraft.world.World;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
 
-import java.util.Random;
-
 @Mixin(BlazeEntity.class)
 public abstract class BlazeEntityMixin extends HostileEntity {
     protected BlazeEntityMixin(EntityType<? extends HostileEntity> entityType, World world) {
@@ -28,18 +26,21 @@ public abstract class BlazeEntityMixin extends HostileEntity {
         if (amount != 0) {
             amount--;
         }
-        if (new Random().nextFloat() >= AreEssGee.CONFIG.rodRarity) {
+
+        if (this.random.nextFloat() >= AreEssGee.CONFIG.rodRarity) {
             amount++;
         }
+
         stack.setCount(amount);
         this.dropStack(stack);
     }
 
     @Override
     protected void dropLoot(DamageSource source, boolean causedByPlayer) {
-        if (this.world.getServer() == null) {
+        if (this.world.isClient || this.world.getServer() == null) {
             return;
         }
+
         Identifier identifier = this.getLootTable();
         LootTable lootTable = this.world.getServer().getLootManager().getTable(identifier);
         LootContext.Builder builder = this.getLootContextBuilder(causedByPlayer, source);

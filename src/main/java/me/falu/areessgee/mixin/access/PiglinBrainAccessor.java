@@ -11,5 +11,7 @@ import java.util.List;
 @Mixin(PiglinBrain.class)
 public interface PiglinBrainAccessor {
     @Invoker("getBarteredItem")
-    static List<ItemStack> getBarteredItem(PiglinEntity ignored) { throw new ArithmeticException(); }
+    static List<ItemStack> getBarteredItem(PiglinEntity ignored) {
+        throw new ArithmeticException();
+    }
 }

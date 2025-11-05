@@ -14,8 +14,10 @@ import org.spongepowered.asm.mixin.gen.Accessor;
 public interface SinglePoolElementAccessor {
     @Accessor("field_24015")
     Either<Identifier, Structure> getStructure();
+
     @Accessor("processors")
     ImmutableList<StructureProcessor> getProcessors();
+
     @Mutable
     @Accessor("processors")
     void setProcessors(ImmutableList<StructureProcessor> processors);

@@ -1,7 +1,7 @@
-package me.falu.areessgee;
+package me.falu.areessgee.owner;
 
 import net.minecraft.world.gen.feature.ConfiguredStructureFeature;
 
-public interface IBiome {
+public interface StructureFeatureOwner {
     void areessgee$removeStructureFeature(ConfiguredStructureFeature<?, ?> configuredStructureFeature);
 }

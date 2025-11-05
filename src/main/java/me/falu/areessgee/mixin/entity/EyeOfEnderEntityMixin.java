@@ -1,4 +1,4 @@
-package me.falu.areessgee.mixin.entities;
+package me.falu.areessgee.mixin.entity;
 
 import me.falu.areessgee.AreEssGee;
 import net.minecraft.entity.EyeOfEnderEntity;
@@ -16,6 +16,9 @@ public class EyeOfEnderEntityMixin {
     @Inject(method = "moveTowards", at = @At("TAIL"))
     private void neverBreak(BlockPos pos, CallbackInfo ci) {
         if (AreEssGee.CONFIG.guaranteeEyeDrops) {
+            // We set this explicitly to true instead of the value of the config option,
+            // because that would mean if the user has this option disabled it would never drop an eye,
+            // instead we want to preserve vanilla behavior if it's disabled.
             this.dropsItem = true;
         }
     }

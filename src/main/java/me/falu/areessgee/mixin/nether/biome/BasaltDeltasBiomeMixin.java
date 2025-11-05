@@ -1,4 +1,4 @@
-package me.falu.areessgee.mixin.nether.biomes;
+package me.falu.areessgee.mixin.nether.biome;
 
 import me.falu.areessgee.AreEssGee;
 import net.minecraft.world.biome.BasaltDeltasBiome;
@@ -17,8 +17,10 @@ public abstract class BasaltDeltasBiomeMixin extends Biome {
 
     @Inject(method = "<init>", at = @At("TAIL"))
     private void addBastion(CallbackInfo ci) {
-        if (AreEssGee.CONFIG.basaltBastions) {
-            this.addStructureFeature(DefaultBiomeFeatures.BASTION_REMNANT);
+        if (!AreEssGee.CONFIG.basaltBastions) {
+            return;
         }
+
+        this.addStructureFeature(DefaultBiomeFeatures.BASTION_REMNANT);
     }
 }

@@ -26,6 +26,7 @@ public abstract class CarverMixin {
         ) {
             return 1;
         }
+
         return Math.max(a, b);
     }
 }

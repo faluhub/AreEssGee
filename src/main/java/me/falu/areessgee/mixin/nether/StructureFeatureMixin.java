@@ -1,5 +1,6 @@
 package me.falu.areessgee.mixin.nether;
 
+import com.llamalad7.mixinextras.sugar.Local;
 import me.falu.areessgee.AreEssGee;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.ChunkPos;
@@ -17,33 +18,37 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.Redirect;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
-import java.util.Locale;
-
 @Mixin(StructureFeature.class)
 public abstract class StructureFeatureMixin<C extends FeatureConfig> {
     @Shadow
     public abstract String getName();
+
     @Shadow
     protected abstract boolean shouldStartAt(ChunkGenerator chunkGenerator, BiomeSource biomeSource, long l, ChunkRandom chunkRandom, int i, int j, Biome biome, ChunkPos chunkPos, C featureConfig);
 
     @Unique
+    @SuppressWarnings("BooleanMethodIsAlwaysInverted")
     private boolean isAffected() {
-        return AreEssGee.AFFECTED_STRUCTURES.contains(this.getName().toLowerCase(Locale.ROOT));
+        return AreEssGee.AFFECTED_STRUCTURES.contains(this.getName().toLowerCase());
     }
 
     @Inject(method = "method_27218", at = @At("RETURN"), cancellable = true)
-    private void customChunkPos(CallbackInfoReturnable<ChunkPos> cir) {
-        if (this.isAffected()) {
-            cir.setReturnValue(AreEssGee.calculateChunkPos(cir.getReturnValue().x, cir.getReturnValue().z));
+    private void customChunkPos(CallbackInfoReturnable<ChunkPos> cir, @Local(argsOnly = true, ordinal = 0) ChunkRandom random) {
+        if (!this.isAffected()) {
+            return;
         }
+
+        cir.setReturnValue(AreEssGee.calculateChunkPos(cir.getReturnValue().x, cir.getReturnValue().z, random));
     }
 
     @Inject(method = "locateStructure", at = @At("HEAD"), cancellable = true)
     private void cancelLocate(CallbackInfoReturnable<BlockPos> cir) {
-        if (this.isAffected()) {
-            cir.setReturnValue(null);
-            cir.cancel();
+        if (!this.isAffected()) {
+            return;
         }
+
+        cir.setReturnValue(null);
+        cir.cancel();
     }
 
     @Redirect(
@@ -54,15 +59,19 @@ public abstract class StructureFeatureMixin<C extends FeatureConfig> {
             )
     )
     private boolean onlyOne(StructureFeature<C> instance, ChunkGenerator chunkGenerator, BiomeSource biomeSource, long l, ChunkRandom chunkRandom, int i, int j, Biome biome, ChunkPos chunkPos, C featureConfig) {
-        if (this.isAffected()) {
-            if (AreEssGee.PLACED_STRUCTURES.contains(instance)) {
-                return false;
-            }
-            AreEssGee.PLACED_STRUCTURES.add(instance);
-            AreEssGee.USED_QUADRANTS.add(AreEssGee.calculateQuadrant(i, j));
-            AreEssGee.log("Generated " + this.getName() + " at [" + i + ", " + j + "]");
-            return true;
+        if (!this.isAffected()) {
+            return this.shouldStartAt(chunkGenerator, biomeSource, l, chunkRandom, i, j, biome, chunkPos, featureConfig);
         }
-        return this.shouldStartAt(chunkGenerator, biomeSource, l, chunkRandom, i, j, biome, chunkPos, featureConfig);
+
+        if (AreEssGee.PLACED_STRUCTURES.contains(instance.getName().toLowerCase())) {
+            return false;
+        }
+
+        AreEssGee.PLACED_STRUCTURES.add(instance.getName().toLowerCase());
+        AreEssGee.USED_QUADRANTS.add(AreEssGee.calculateQuadrant(i, j));
+
+        AreEssGee.debug("Generated " + this.getName() + " at [" + i + ", " + j + "]");
+
+        return true;
     }
 }

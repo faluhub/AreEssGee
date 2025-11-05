@@ -11,6 +11,7 @@ import org.spongepowered.asm.mixin.gen.Accessor;
 public interface RuleStructureProcessorAccessor {
     @Accessor("rules")
     ImmutableList<StructureProcessorRule> getRules();
+
     @Mutable
     @Accessor("rules")
     void setRules(ImmutableList<StructureProcessorRule> rules);

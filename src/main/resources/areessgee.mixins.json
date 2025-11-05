@@ -8,24 +8,21 @@
     "access.RuleStructureProcessorAccessor",
     "access.SinglePoolElementAccessor",
     "access.StructurePoolAccessor",
-
-    "blocks.GravelBlockMixin",
-
-    "entities.ai.PiglinBrainMixin",
-
-    "entities.BlazeEntityMixin",
-    "entities.EyeOfEnderEntityMixin",
-    "entities.ZombifiedPiglinEntityMixin",
+    "block.GravelBlockMixin",
+    "entity.PiglinBrainMixin",
+    "entity.BlazeEntityMixin",
+    "entity.EyeOfEnderEntityMixin",
+    "entity.ZombifiedPiglinEntityMixin",
 
     "gui.CreateWorldScreenMixin",
     "gui.DebugHudMixin",
 
-    "nether.biomes.BasaltDeltasBiomeMixin",
-    "nether.biomes.MultiNoiseBiomeSourceMixin",
+    "nether.biome.BasaltDeltasBiomeMixin",
+    "nether.biome.MultiNoiseBiomeSourceMixin",
+    "nether.biome.BiomeMixin",
 
-    "nether.BiomeMixin",
     "nether.ChunkGeneratorTypePresetMixin",
-    "nether.ChunkStatusMixin",
+    "nether.MobSpawnerLogicMixin",
     "nether.StructureFeatureMixin",
 
     "overworld.stronghold.PieceSettingMixin",

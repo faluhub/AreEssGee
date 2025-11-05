@@ -1,7 +1,7 @@
-package me.falu.areessgee.mixin.entities.ai;
+package me.falu.areessgee.mixin.entity;
 
 import com.google.common.collect.Lists;
-import me.falu.areessgee.PiglinBarterState;
+import me.falu.areessgee.world.WorldPiglinBarterState;
 import net.minecraft.entity.mob.PiglinBrain;
 import net.minecraft.entity.mob.PiglinEntity;
 import net.minecraft.item.ItemStack;
@@ -13,7 +13,6 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 import java.util.List;
-import java.util.Random;
 
 @Mixin(PiglinBrain.class)
 public abstract class PiglinBrainMixin {
@@ -23,8 +22,9 @@ public abstract class PiglinBrainMixin {
         if (server == null || cir.getReturnValue().isEmpty()) {
             return;
         }
+
         ServerWorld overworld = server.getOverworld();
-        PiglinBarterState piglinBarterState = overworld.getPersistentStateManager().getOrCreate(PiglinBarterState::new, "piglin_barters");
-        cir.setReturnValue(Lists.newArrayList(piglinBarterState.guaranteeItem(piglin, cir.getReturnValue().get(0), new Random())));
+        WorldPiglinBarterState piglinBarterState = overworld.getPersistentStateManager().getOrCreate(WorldPiglinBarterState::new, "piglin_barters");
+        cir.setReturnValue(Lists.newArrayList(piglinBarterState.guaranteeItem(piglin, cir.getReturnValue().get(0), piglin.getRandom())));
     }
 }

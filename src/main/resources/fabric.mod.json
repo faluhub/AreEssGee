@@ -24,9 +24,10 @@
   ],
   "depends": {
     "minecraft": "1.16.1",
-    "speedrunapi": ">=1.0"
+    "speedrunapi": ">=1.2"
   },
   "breaks": {
-    "pogworld": "*"
+    "pogworld": "*",
+    "mcsrranked": "*"
   }
 }

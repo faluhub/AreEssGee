@@ -1,12 +1,11 @@
 package me.falu.areessgee;
 
+import me.contaria.speedrunapi.config.SpeedrunConfigContainer;
+import me.contaria.speedrunapi.config.api.SpeedrunConfig;
+import me.contaria.speedrunapi.config.api.annotations.Config;
 import net.minecraft.client.MinecraftClient;
-import org.mcsr.speedrunapi.config.SpeedrunConfigContainer;
-import org.mcsr.speedrunapi.config.api.SpeedrunConfig;
-import org.mcsr.speedrunapi.config.api.annotations.Config;
-import org.mcsr.speedrunapi.config.api.annotations.InitializeOn;
 
-@InitializeOn(InitializeOn.InitPoint.PRELAUNCH)
+@Config(init = Config.InitPoint.PRELAUNCH)
 public class AreEssGeeConfig implements SpeedrunConfig {
     @Config.Category("position")
     @Config.Numbers.Whole.Bounds(min = 1, max = 10)
@@ -39,6 +38,9 @@ public class AreEssGeeConfig implements SpeedrunConfig {
     @Config.Category("luck")
     @Config.Numbers.Fractional.Bounds(min = 0.0F, max = 1.0F)
     public float portalEyeRarity = 0.9F;
+    @Config.Category("luck")
+    @Config.Numbers.Fractional.Bounds(min = 0.0F, max = 1.0F)
+    public float spawnerDelayFactor = 0.5F;
     @Config.Category("luck")
     public boolean guaranteeEyeDrops = true;
     @Config.Category("misc")

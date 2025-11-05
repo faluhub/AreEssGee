@@ -1,5 +1,6 @@
 package me.falu.areessgee.mixin.overworld;
 
+import com.llamalad7.mixinextras.sugar.Local;
 import me.falu.areessgee.AreEssGee;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.biome.Biome;

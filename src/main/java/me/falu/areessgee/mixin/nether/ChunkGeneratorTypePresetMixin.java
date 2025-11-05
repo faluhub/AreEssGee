@@ -22,11 +22,39 @@ public class ChunkGeneratorTypePresetMixin {
 
     @Inject(method = "createCavesType", at = @At("HEAD"), cancellable = true)
     private static void createCavesType(StructuresConfig config, BlockState defaultBlock, BlockState defaultFluid, ChunkGeneratorType.Preset preset, CallbackInfoReturnable<ChunkGeneratorType> cir) {
-        if (AreEssGee.CONFIG.openNetherTerrain) {
-            Map<StructureFeature<?>, StructureConfig> map = Maps.newHashMap(StructuresConfig.DEFAULT_STRUCTURES);
-            map.put(StructureFeature.RUINED_PORTAL, new StructureConfig(25, 10, 34222645));
-            cir.setReturnValue(new ChunkGeneratorType(new StructuresConfig(Optional.ofNullable(config.getStronghold()), map), new NoiseConfig(128, new NoiseSamplingConfig(1.0D, 3.0D, 80.0D, 40.0D), new SlideConfig(120, 3, 0), new SlideConfig(320, 4, -1), 2, 2, 0.0D, 0.0D, false, false, false, false), defaultBlock, defaultFluid, 0, 0, 32, false, Optional.of(preset)));
+        if (!AreEssGee.CONFIG.openNetherTerrain) {
+            return;
         }
+
+        Map<StructureFeature<?>, StructureConfig> structures = Maps.newHashMap(StructuresConfig.DEFAULT_STRUCTURES);
+        structures.put(StructureFeature.RUINED_PORTAL, new StructureConfig(25, 10, 34222645));
+
+        cir.setReturnValue(
+                new ChunkGeneratorType(
+                        new StructuresConfig(Optional.ofNullable(config.getStronghold()), structures),
+                        new NoiseConfig(
+                                128,
+                                new NoiseSamplingConfig(0.52D, 3.0D, 80.0D, 60.0D),
+                                new SlideConfig(120, 3, 0),
+                                new SlideConfig(320, 4, -1),
+                                1,
+                                2,
+                                0.08215D,
+                                0.01174D,
+                                false,
+                                false,
+                                false,
+                                false
+                        ),
+                        defaultBlock,
+                        defaultFluid,
+                        0,
+                        0,
+                        32,
+                        false,
+                        Optional.of(preset)
+                )
+        );
     }
 
     @Inject(method = "<init>", at = @At("TAIL"))

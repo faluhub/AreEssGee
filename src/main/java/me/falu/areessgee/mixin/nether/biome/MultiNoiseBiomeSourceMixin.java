@@ -1,4 +1,4 @@
-package me.falu.areessgee.mixin.nether.biomes;
+package me.falu.areessgee.mixin.nether.biome;
 
 import me.falu.areessgee.AreEssGee;
 import net.minecraft.util.Identifier;
@@ -11,18 +11,22 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
-import java.util.Locale;
-
 @Mixin(MultiNoiseBiomeSource.class)
 public class MultiNoiseBiomeSourceMixin {
     @Inject(method = "getBiomeForNoiseGen", at = @At("RETURN"), cancellable = true)
     private void removeBasaltRegion(int biomeX, int biomeY, int biomeZ, CallbackInfoReturnable<Biome> cir) {
-        if (cir.getReturnValue().equals(Biomes.BASALT_DELTAS)) {
-            int limit = AreEssGee.CONFIG.basaltReplacementRange;
-            if ((biomeX <= 0 && biomeX > -limit) || (biomeX >= 0 && biomeX < limit) || (biomeZ <= 0 && biomeZ > -limit) || (biomeZ >= 0 && biomeZ < limit)) {
-                Biome biome = Registry.BIOME.get(new Identifier(AreEssGee.CONFIG.basaltReplacement.toLowerCase(Locale.ROOT)));
-                cir.setReturnValue(biome == null ? Biomes.NETHER_WASTES : biome);
-            }
+        if (!cir.getReturnValue().equals(Biomes.BASALT_DELTAS)) {
+            return;
         }
+
+        int limit = AreEssGee.CONFIG.basaltReplacementRange;
+        boolean inRangeX = (biomeX <= 0 && biomeX > -limit) || (biomeX >= 0 && biomeX < limit);
+        boolean inRangeZ = (biomeZ <= 0 && biomeZ > -limit) || (biomeZ >= 0 && biomeZ < limit);
+        if (!inRangeX && !inRangeZ) {
+            return;
+        }
+
+        Biome biome = Registry.BIOME.get(new Identifier(AreEssGee.CONFIG.basaltReplacement.toLowerCase()));
+        cir.setReturnValue(biome == null ? Biomes.NETHER_WASTES : biome);
     }
 }

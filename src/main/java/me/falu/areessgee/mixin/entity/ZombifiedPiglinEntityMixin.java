@@ -1,4 +1,4 @@
-package me.falu.areessgee.mixin.entities;
+package me.falu.areessgee.mixin.entity;
 
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SpawnReason;
@@ -23,9 +23,11 @@ public class ZombifiedPiglinEntityMixin {
     @Inject(method = "canSpawn(Lnet/minecraft/entity/EntityType;Lnet/minecraft/world/WorldAccess;Lnet/minecraft/entity/SpawnReason;Lnet/minecraft/util/math/BlockPos;Ljava/util/Random;)Z", at = @At("RETURN"), cancellable = true)
     private static void noBastionPigmen(EntityType<ZombifiedPiglinEntity> type, WorldAccess world, SpawnReason spawnReason, BlockPos pos, Random random, CallbackInfoReturnable<Boolean> cir) {
         if (world instanceof ServerWorld) {
-            if (BASTION_PREDICATE.test((ServerWorld) world, pos.getX(), pos.getY(), pos.getZ())) {
-                cir.setReturnValue(false);
+            if (!BASTION_PREDICATE.test((ServerWorld) world, pos.getX(), pos.getY(), pos.getZ())) {
+                return;
             }
+
+            cir.setReturnValue(false);
         }
     }
 }
