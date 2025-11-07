@@ -15,6 +15,7 @@
   "speedrunapi.config.areessgee.option.oceanRavineRarity": "Ocean Ravine Rarity",
   "speedrunapi.config.areessgee.option.treasureGoldRarity": "Treasure Gold Rarity",
   "speedrunapi.config.areessgee.option.portalEyeRarity": "Portal Eye Rarity",
+  "speedrunapi.config.areessgee.option.spawnerDelayFactor": "Spawner Delay Factor",
   "speedrunapi.config.areessgee.option.guaranteeEyeDrops": "Guarantee Eye Drops",
   "speedrunapi.config.areessgee.option.maxStrongholdDepth": "Max. Stronghold Depth",
   "speedrunapi.config.areessgee.option.openNetherTerrain": "Open Nether Terrain"
